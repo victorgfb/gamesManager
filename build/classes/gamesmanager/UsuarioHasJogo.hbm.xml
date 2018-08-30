@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 30/08/2018 12:31:40 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="gamesmanager.UsuarioHasJogo" table="Usuario_has_Jogo" catalog="game" optimistic-lock="version">
+        <composite-id name="id" class="gamesmanager.UsuarioHasJogoId">
+            <key-property name="usuarioPkCpf" type="string">
+                <column name="Usuario_PK_cpf" length="11" />
+            </key-property>
+            <key-property name="jogoPkCod" type="int">
+                <column name="Jogo_PK_cod" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="jogo" class="gamesmanager.Jogo" update="false" insert="false" fetch="select">
+            <column name="Jogo_PK_cod" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usuario" class="gamesmanager.Usuario" update="false" insert="false" fetch="select">
+            <column name="Usuario_PK_cpf" length="11" not-null="true" />
+        </many-to-one>
+        <property name="finalizado" type="boolean">
+            <column name="finalizado" not-null="true" />
+        </property>
+        <property name="horas" type="short">
+            <column name="horas" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

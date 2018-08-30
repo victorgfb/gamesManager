@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 30/08/2018 12:31:40 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="gamesmanager.Jogo" table="Jogo" catalog="game" optimistic-lock="version">
+        <id name="pkCod" type="java.lang.Integer">
+            <column name="PK_cod" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="estudio" class="gamesmanager.Estudio" fetch="select">
+            <column name="Estudio_PK_cod" not-null="true" />
+        </many-to-one>
+        <property name="nome" type="string">
+            <column name="nome" length="100" not-null="true" />
+        </property>
+        <property name="genero" type="string">
+            <column name="genero" length="45" not-null="true" />
+        </property>
+        <property name="nota" type="java.lang.Short">
+            <column name="nota" />
+        </property>
+        <property name="anoLanc" type="int">
+            <column name="anoLanc" length="0" />
+        </property>
+        <set name="plataformas" table="Plataforma_has_Jogo" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="Jogo_PK_cod" not-null="true" />
+            </key>
+            <many-to-many entity-name="gamesmanager.Plataforma">
+                <column name="Plataforma_PK_cod" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="usuarioHasJogos" table="Usuario_has_Jogo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Jogo_PK_cod" not-null="true" />
+            </key>
+            <one-to-many class="gamesmanager.UsuarioHasJogo" />
+        </set>
+    </class>
+</hibernate-mapping>
