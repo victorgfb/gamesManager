@@ -12,6 +12,7 @@ import java.util.Date;
 import org.hibernate.Session;
 import java.util.HashSet;
 import java.util.Locale;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
  
@@ -239,12 +240,13 @@ public class TelaCadastro extends javax.swing.JFrame {
             
             System.out.println(a.getEstudio().getNome());
             
-            HashSet set1,set2;
-            set2 = new HashSet();
+            HashSet set1;
+            Set set2;
+            set2 = this.usuario.getUsuarioHasJogos();
             set1 = new HashSet();
             
             set1.add(s.createQuery("SELECT a FROM Plataforma a WHERE a.nome = :nome").setParameter("nome", plataforma).list().get(0));
-           // a.setPlataformas(set1);
+            a.setPlataformas(set1);
             
             UsuarioHasJogo usr = new UsuarioHasJogo();
             usr.setJogo(a);
@@ -265,7 +267,7 @@ public class TelaCadastro extends javax.swing.JFrame {
             s.getTransaction().commit();
             this.setVisible(false);
             new TelaAlerta(3).setVisible(true);
-            new TelaInicio();
+            new TelaInicio(this.usuario);
         }
     }//GEN-LAST:event_cadastrarButtonActionPerformed
 
