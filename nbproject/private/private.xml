@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/home/victor/NetBeansProjects/gamesManager/src/gamesmanager/TelaCadastroUsuario.java</file>
+            <file>file:/home/victor/NetBeansProjects/gamesManager/src/gamesmanager/TelaCadastro.java</file>
+            <file>file:/home/victor/NetBeansProjects/gamesManager/src/gamesmanager/GamesManager.java</file>
+            <file>file:/home/victor/NetBeansProjects/gamesManager/src/gamesmanager/MeusJogos.java</file>
+            <file>file:/home/victor/NetBeansProjects/gamesManager/src/hibernate.reveng.xml</file>
+            <file>file:/home/victor/NetBeansProjects/gamesManager/src/gamesmanager/TelaTodosJogos.java</file>
+            <file>file:/home/victor/NetBeansProjects/gamesManager/src/gamesmanager/TelaAlerta.java</file>
+            <file>file:/home/victor/NetBeansProjects/gamesManager/src/gamesmanager/HibernateUtil.java</file>
+            <file>file:/home/victor/NetBeansProjects/gamesManager/src/gamesmanager/Jogo.java</file>
+            <file>file:/home/victor/NetBeansProjects/gamesManager/src/gamesmanager/NewHibernateUtil.java</file>
+            <file>file:/home/victor/NetBeansProjects/gamesManager/src/hibernate.cfg.xml</file>
+            <file>file:/home/victor/NetBeansProjects/gamesManager/src/gamesmanager/TelaInicio.java</file>
+            <file>file:/home/victor/NetBeansProjects/gamesManager/src/gamesmanager/TelaLogin.java</file>
+            <file>file:/home/victor/NetBeansProjects/gamesManager/src/gamesmanager/Jogo.hbm.xml</file>
+        </group>
+    </open-files>
+</project-private>

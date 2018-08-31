@@ -108,8 +108,8 @@ public class TelaInicio extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:]
-        MeusJogos meusJogos = new MeusJogos();
-        this.setVisible(false);
+        MeusJogos meusJogos = new MeusJogos(this.usuario);
+        //this.setVisible(false);
         meusJogos.setVisible(true);
         
     }//GEN-LAST:event_jButton1ActionPerformed

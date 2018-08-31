@@ -5,6 +5,10 @@
  */
 package gamesmanager;
 
+import java.util.Iterator;
+import java.util.Set;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author victor
@@ -13,9 +17,28 @@ public class MeusJogos extends javax.swing.JFrame {
 
     /**
      * Creates new form NewJFrame
+     * @param usr
      */
-    public MeusJogos() {
+    public MeusJogos(Usuario usr) {
         initComponents();
+        int i;
+
+        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+
+        Set games = usr.getUsuarioHasJogos();
+       // modelo.setRowCount(games.size());
+        System.out.println(games.size());
+        Jogo j;
+
+         for (Iterator iterator = games.iterator();iterator.hasNext();) {
+            UsuarioHasJogo u;
+            u = (UsuarioHasJogo) iterator.next();
+            j = u.getJogo();
+            modelo.addRow(new Object[] {j.getNome(),j.getGenero(),j.getEstudio().getNome() + ", " + j.getEstudio().getSede(),j.getAnoLanc(),j.getNota()});
+
+        }
+
+
     }
 
     /**
@@ -27,6 +50,7 @@ public class MeusJogos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        entityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("game?zeroDateTimeBehavior=convertToNullPU").createEntityManager();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -38,20 +62,17 @@ public class MeusJogos extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
-                "Nome", "Genero", "Plataforma", "Finalizado", "Hrs"
+                "Nome", "Genero", "Estudio", "Ano Lanc", "Nota", "Excluir"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Short.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, true, true
+                false, false, false, false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -83,7 +104,7 @@ public class MeusJogos extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Salvar alterações");
+        jButton2.setText("Excluir");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -140,7 +161,7 @@ public class MeusJogos extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         //new TelaInicio();
-        this.dispose();
+        this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -154,7 +175,7 @@ public class MeusJogos extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -183,11 +204,12 @@ public class MeusJogos extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new MeusJogos().setVisible(true);
+           // new MeusJogos().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.persistence.EntityManager entityManager;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
@@ -195,4 +217,5 @@ public class MeusJogos extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
 }
