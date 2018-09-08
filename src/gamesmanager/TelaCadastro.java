@@ -240,30 +240,31 @@ public class TelaCadastro extends javax.swing.JFrame {
             
             System.out.println(a.getEstudio().getNome());
             
-            HashSet set1;
-            Set set2;
-            set2 = this.usuario.getUsuarioHasJogos();
+            HashSet set1,set2;
+            //Set set2;
+            //set2 = this.usuario.getUsuarioHasJogos();
             set1 = new HashSet();
-            
+            set2 = new HashSet();
             set1.add(s.createQuery("SELECT a FROM Plataforma a WHERE a.nome = :nome").setParameter("nome", plataforma).list().get(0));
             a.setPlataformas(set1);
             
-            UsuarioHasJogo usr = new UsuarioHasJogo();
-            usr.setJogo(a);
-            usr.setUsuario(this.usuario);
-            
+            //UsuarioHasJogo usr = new UsuarioHasJogo();
+            //usr.setJogo(a);
+            //usr.setUsuario(this.usuario);
+            set2.add(a);
+            this.usuario.setJogos(set2);
             s.save(a);
             
-            UsuarioHasJogoId usrId = new UsuarioHasJogoId();
-            usrId.setUsuarioPkCpf(this.usuario.getPkCpf());
-            usrId.setJogoPkCod(a.getPkCod());
+            //UsuarioHasJogoId usrId = new UsuarioHasJogoId();
+            //usrId.setUsuarioPkCpf(this.usuario.getPkCpf());
+            //usrId.setJogoPkCod(a.getPkCod());
             
-            usr.setId(usrId);
+            //usr.setId(usrId);
             
-            set2.add(usr);
+            //set2.add(usr);
            // a.setUsuarioHasJogos(set2);
            
-            s.save(usr);
+            //s.save(usr);
             s.getTransaction().commit();
             this.setVisible(false);
             new TelaAlerta(3).setVisible(true);

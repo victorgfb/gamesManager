@@ -43,14 +43,13 @@ Contributor(s):
   <session-factory>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/game?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/games?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">root</property>
-    <property name="hibernate.query.factory_class">org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory</property>
     <property name="hibernate.show_sql">true</property>
-    <mapping resource="gamesmanager/UsuarioHasJogo.hbm.xml"/>
+    <property name="hibernate.query.factory_class">org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory</property>
     <mapping resource="gamesmanager/Usuario.hbm.xml"/>
+    <mapping resource="gamesmanager/Plataforma.hbm.xml"/>
     <mapping resource="gamesmanager/Estudio.hbm.xml"/>
     <mapping resource="gamesmanager/Jogo.hbm.xml"/>
-    <mapping resource="gamesmanager/Plataforma.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

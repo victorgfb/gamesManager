@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 30/08/2018 12:31:40 by Hibernate Tools 4.3.1 -->
+<!-- Generated 08/09/2018 09:08:52 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="gamesmanager.Jogo" table="Jogo" catalog="game" optimistic-lock="version">
+    <class name="gamesmanager.Jogo" table="Jogo" catalog="games" optimistic-lock="version">
         <id name="pkCod" type="java.lang.Integer">
             <column name="PK_cod" />
             <generator class="identity" />
         </id>
         <many-to-one name="estudio" class="gamesmanager.Estudio" fetch="select">
-            <column name="Estudio_PK_cod" not-null="true" />
+            <column name="PK_estudio_cod" not-null="true" />
         </many-to-one>
         <property name="nome" type="string">
             <column name="nome" length="100" not-null="true" />
@@ -25,17 +25,19 @@
         </property>
         <set name="plataformas" table="Plataforma_has_Jogo" inverse="false" lazy="true" fetch="select">
             <key>
-                <column name="Jogo_PK_cod" not-null="true" />
+                <column name="PK_jogo_cod" not-null="true" />
             </key>
             <many-to-many entity-name="gamesmanager.Plataforma">
-                <column name="Plataforma_PK_cod" not-null="true" />
+                <column name="PK_plataforma_cod" not-null="true" />
             </many-to-many>
         </set>
-        <set name="usuarioHasJogos" table="Usuario_has_Jogo" inverse="true" lazy="true" fetch="select">
+        <set name="usuarios" table="Usuario_has_Jogo" inverse="false" lazy="true" fetch="select">
             <key>
-                <column name="Jogo_PK_cod" not-null="true" />
+                <column name="PK_jogo_cod" not-null="true" />
             </key>
-            <one-to-many class="gamesmanager.UsuarioHasJogo" />
+            <many-to-many entity-name="gamesmanager.Usuario">
+                <column name="PK_usuario_cpf" length="11" not-null="true" />
+            </many-to-many>
         </set>
     </class>
 </hibernate-mapping>

@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 30/08/2018 12:31:40 by Hibernate Tools 4.3.1 -->
+<!-- Generated 08/09/2018 09:08:52 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="gamesmanager.Usuario" table="Usuario" catalog="game" optimistic-lock="version">
+    <class name="gamesmanager.Usuario" table="Usuario" catalog="games" optimistic-lock="version">
         <id name="pkCpf" type="string">
             <column name="PK_cpf" length="11" />
             <generator class="assigned" />
@@ -12,16 +12,33 @@
             <column name="nome" length="100" not-null="true" />
         </property>
         <property name="email" type="string">
-            <column name="email" length="45" />
+            <column name="email" length="45" not-null="true" />
         </property>
         <property name="senha" type="string">
-            <column name="senha" length="45" />
+            <column name="senha" length="45" not-null="true" />
         </property>
-        <set name="usuarioHasJogos" table="Usuario_has_Jogo" inverse="true" lazy="true" fetch="select">
+        <property name="cidade" type="string">
+            <column name="cidade" length="50" not-null="true" />
+        </property>
+        <property name="estado" type="string">
+            <column name="estado" length="2" not-null="true" />
+        </property>
+        <property name="ddd" type="java.lang.Integer">
+            <column name="ddd" />
+        </property>
+        <property name="numero" type="java.lang.Integer">
+            <column name="numero" />
+        </property>
+        <property name="sexo" type="string">
+            <column name="sexo" length="2" not-null="true" />
+        </property>
+        <set name="jogos" table="Usuario_has_Jogo" inverse="false" lazy="true" fetch="select">
             <key>
-                <column name="Usuario_PK_cpf" length="11" not-null="true" />
+                <column name="PK_usuario_cpf" length="11" not-null="true" />
             </key>
-            <one-to-many class="gamesmanager.UsuarioHasJogo" />
+            <many-to-many entity-name="gamesmanager.Jogo">
+                <column name="PK_jogo_cod" not-null="true" />
+            </many-to-many>
         </set>
     </class>
 </hibernate-mapping>

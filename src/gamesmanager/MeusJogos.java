@@ -24,16 +24,16 @@ public class MeusJogos extends javax.swing.JFrame {
         int i;
 
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-
-        Set games = usr.getUsuarioHasJogos();
+        
+        Set games = usr.getJogos();
        // modelo.setRowCount(games.size());
-        System.out.println(games.size());
+        System.out.println(usr.getNome());
         Jogo j;
 
          for (Iterator iterator = games.iterator();iterator.hasNext();) {
-            UsuarioHasJogo u;
-            u = (UsuarioHasJogo) iterator.next();
-            j = u.getJogo();
+            //UsuarioHasJogo u;
+            j = (Jogo) iterator.next();
+            //j = u.getJogo();
             modelo.addRow(new Object[] {j.getNome(),j.getGenero(),j.getEstudio().getNome() + ", " + j.getEstudio().getSede(),j.getAnoLanc(),j.getNota()});
 
         }
@@ -50,7 +50,7 @@ public class MeusJogos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        entityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("game?zeroDateTimeBehavior=convertToNullPU").createEntityManager();
+        entityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("games?zeroDateTimeBehavior=convertToNullPU").createEntityManager();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -118,12 +118,10 @@ public class MeusJogos extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 1, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 185, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))

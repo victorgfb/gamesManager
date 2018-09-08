@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 30/08/2018 12:31:40 by Hibernate Tools 4.3.1 -->
+<!-- Generated 08/09/2018 09:08:52 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="gamesmanager.Estudio" table="Estudio" catalog="game" optimistic-lock="version">
+    <class name="gamesmanager.Estudio" table="Estudio" catalog="games" optimistic-lock="version">
         <id name="pkCod" type="java.lang.Integer">
             <column name="PK_cod" />
             <generator class="identity" />
@@ -16,13 +16,13 @@
         </property>
         <set name="jogos" table="Jogo" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="Estudio_PK_cod" not-null="true" />
+                <column name="PK_estudio_cod" not-null="true" />
             </key>
             <one-to-many class="gamesmanager.Jogo" />
         </set>
         <set name="plataformas" table="Plataforma" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="Estudio_PK_cod" not-null="true" />
+                <column name="PK_estudio_cod" not-null="true" />
             </key>
             <one-to-many class="gamesmanager.Plataforma" />
         </set>

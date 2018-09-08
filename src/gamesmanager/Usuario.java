@@ -1,5 +1,5 @@
 package gamesmanager;
-// Generated 30/08/2018 12:31:40 by Hibernate Tools 4.3.1
+// Generated 08/09/2018 09:08:52 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -15,22 +15,37 @@ public class Usuario  implements java.io.Serializable {
      private String nome;
      private String email;
      private String senha;
-     private Set usuarioHasJogos = new HashSet(0);
+     private String cidade;
+     private String estado;
+     private Integer ddd;
+     private Integer numero;
+     private String sexo;
+     private Set jogos = new HashSet(0);
 
     public Usuario() {
     }
 
 	
-    public Usuario(String pkCpf, String nome) {
+    public Usuario(String pkCpf, String nome, String email, String senha, String cidade, String estado, String sexo) {
         this.pkCpf = pkCpf;
         this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+        this.cidade = cidade;
+        this.estado = estado;
+        this.sexo = sexo;
     }
-    public Usuario(String pkCpf, String nome, String email, String senha, Set usuarioHasJogos) {
+    public Usuario(String pkCpf, String nome, String email, String senha, String cidade, String estado, Integer ddd, Integer numero, String sexo, Set jogos) {
        this.pkCpf = pkCpf;
        this.nome = nome;
        this.email = email;
        this.senha = senha;
-       this.usuarioHasJogos = usuarioHasJogos;
+       this.cidade = cidade;
+       this.estado = estado;
+       this.ddd = ddd;
+       this.numero = numero;
+       this.sexo = sexo;
+       this.jogos = jogos;
     }
    
     public String getPkCpf() {
@@ -61,17 +76,48 @@ public class Usuario  implements java.io.Serializable {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-    public Set getUsuarioHasJogos() {
-        return this.usuarioHasJogos;
+    public String getCidade() {
+        return this.cidade;
     }
     
-    public void setUsuarioHasJogos(Set usuarioHasJogos) {
-        this.usuarioHasJogos = usuarioHasJogos;
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
     }
-
-
-
-
+    public String getEstado() {
+        return this.estado;
+    }
+    
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+    public Integer getDdd() {
+        return this.ddd;
+    }
+    
+    public void setDdd(Integer ddd) {
+        this.ddd = ddd;
+    }
+    public Integer getNumero() {
+        return this.numero;
+    }
+    
+    public void setNumero(Integer numero) {
+        this.numero = numero;
+    }
+    public String getSexo() {
+        return this.sexo;
+    }
+    
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+    public Set getJogos() {
+        return this.jogos;
+    }
+    
+    public void setJogos(Set jogos) {
+        this.jogos = jogos;
+    }
 }
 
 

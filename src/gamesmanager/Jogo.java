@@ -1,5 +1,5 @@
 package gamesmanager;
-// Generated 30/08/2018 12:31:40 by Hibernate Tools 4.3.1
+// Generated 08/09/2018 09:08:52 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -19,7 +19,7 @@ public class Jogo  implements java.io.Serializable {
      private Short nota;
      private int anoLanc;
      private Set plataformas = new HashSet(0);
-     private Set usuarioHasJogos = new HashSet(0);
+     private Set usuarios = new HashSet(0);
 
     public Jogo() {
     }
@@ -30,14 +30,14 @@ public class Jogo  implements java.io.Serializable {
         this.nome = nome;
         this.genero = genero;
     }
-    public Jogo(Estudio estudio, String nome, String genero, Short nota, int anoLanc, Set plataformas, Set usuarioHasJogos) {
+    public Jogo(Estudio estudio, String nome, String genero, Short nota, int anoLanc, Set plataformas, Set usuarios) {
        this.estudio = estudio;
        this.nome = nome;
        this.genero = genero;
        this.nota = nota;
        this.anoLanc = anoLanc;
        this.plataformas = plataformas;
-       this.usuarioHasJogos = usuarioHasJogos;
+       this.usuarios = usuarios;
     }
    
     public Integer getPkCod() {
@@ -89,12 +89,12 @@ public class Jogo  implements java.io.Serializable {
     public void setPlataformas(Set plataformas) {
         this.plataformas = plataformas;
     }
-    public Set getUsuarioHasJogos() {
-        return this.usuarioHasJogos;
+    public Set getUsuarios() {
+        return this.usuarios;
     }
     
-    public void setUsuarioHasJogos(Set usuarioHasJogos) {
-        this.usuarioHasJogos = usuarioHasJogos;
+    public void setUsuarios(Set usuarios) {
+        this.usuarios = usuarios;
     }
 
 

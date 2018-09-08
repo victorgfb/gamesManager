@@ -40,11 +40,11 @@ made subject to such option by the copyright holder.
 Contributor(s):
 -->
 <hibernate-reverse-engineering>
-  <schema-selection match-catalog="game"/>
+  <schema-selection match-catalog="games"/>
+  <table-filter match-name="Estudio"/>
   <table-filter match-name="Usuario"/>
   <table-filter match-name="Usuario_has_Jogo"/>
-  <table-filter match-name="Estudio"/>
+  <table-filter match-name="Plataforma"/>
   <table-filter match-name="Jogo"/>
   <table-filter match-name="Plataforma_has_Jogo"/>
-  <table-filter match-name="Plataforma"/>
 </hibernate-reverse-engineering>

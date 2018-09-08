@@ -1,5 +1,5 @@
 package gamesmanager;
-// Generated 30/08/2018 12:31:40 by Hibernate Tools 4.3.1
+// Generated 08/09/2018 09:08:52 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
