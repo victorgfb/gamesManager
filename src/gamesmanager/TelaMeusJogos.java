@@ -7,7 +7,9 @@ package gamesmanager;
 
 import java.util.Iterator;
 import java.util.Set;
+import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
+import org.hibernate.Session;
 
 /**
  *
@@ -165,6 +167,28 @@ public class TelaMeusJogos extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+          // TODO add your handling code here:
+         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+         
+         int size = modelo.getDataVector().size();
+         
+         for (int i = 0; i < size; i++) {
+             
+             Boolean a = (Boolean) ((Vector) modelo.getDataVector().elementAt(i)).elementAt(5);
+             if(a)
+             {
+                Session  s = HibernateUtil.getSessionFactory().openSession();
+   
+                s.beginTransaction();
+        
+                Jogo j = (Jogo) s.createQuery("SELECT a FROM Jogo a WHERE a.nome = :nome").setParameter("nome",((Vector) modelo.getDataVector().elementAt(i)).elementAt(0)).list().get(0);
+             
+                Set usrs = j.getUsuarios();
+                
+                new TelaUsuarios(usrs);
+                
+             }
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

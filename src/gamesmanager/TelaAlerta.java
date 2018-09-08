@@ -86,6 +86,9 @@ public class TelaAlerta extends javax.swing.JFrame {
             case 4:
                 jLabel2.setText("Usuario ou senha incorretos.");
                 break;
+            case 5:
+            jLabel2.setText("Jogo(s) adicionado(s) com sucesso");
+                break;
             default:
                 break;
         }

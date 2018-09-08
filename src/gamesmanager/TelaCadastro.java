@@ -199,7 +199,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         this.dispose();
-        new TelaInicio(this.usuario);
+       // new TelaInicio(this.usuario);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void campoNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNomeActionPerformed
@@ -268,7 +268,7 @@ public class TelaCadastro extends javax.swing.JFrame {
             s.getTransaction().commit();
             this.setVisible(false);
             new TelaAlerta(3).setVisible(true);
-            new TelaInicio(this.usuario);
+            //new TelaInicio(this.usuario);
         }
     }//GEN-LAST:event_cadastrarButtonActionPerformed
 

@@ -5,6 +5,8 @@
  */
 package gamesmanager;
 
+import org.hibernate.Session;
+
 /**
  *
  * @author victor
@@ -15,9 +17,11 @@ public class TelaInicio extends javax.swing.JFrame {
      * Creates new form telaInicio
      */
     public Usuario usuario;
+    public Session session;
     
-    public TelaInicio(Usuario usr) {
+    public TelaInicio(Usuario usr, Session s) {
         this.usuario = usr;
+        this.session = s;
         initComponents();
         this.setVisible(true);
     }
@@ -125,12 +129,12 @@ public class TelaInicio extends javax.swing.JFrame {
         // TODO add your handling code here:
         TelaCadastro telaCadastro = new TelaCadastro(this.usuario);
         telaCadastro.setVisible(true);
-        this.dispose();
+        //this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        new TelaAdicionarJogos(this.usuario);
+        new TelaAdicionarJogos(this.usuario,this.session);
       //  this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 

@@ -11,6 +11,7 @@ import javax.swing.table.DefaultTableModel;
 import org.hibernate.Session;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 import org.hibernate.Query;
 import org.hibernate.transform.Transformers;
   
@@ -23,14 +24,15 @@ public class TelaAdicionarJogos extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
-    public TelaAdicionarJogos(Usuario usr) {
+    
+    private Usuario usuario;
+    private Session s;
+    
+    public TelaAdicionarJogos(Usuario usr, Session s) {
         initComponents();
         this.setVisible(true);
-        
-        Session  s = HibernateUtil.getSessionFactory().openSession();
-   
-        s.beginTransaction();
-        
+        this.usuario = usr;
+        this.s = s;
         
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
         
@@ -53,7 +55,7 @@ public class TelaAdicionarJogos extends javax.swing.JFrame {
          for (Iterator iterator = l.iterator();iterator.hasNext();) {
             //UsuarioHasJogo u;
              v = (VwEmprestimo) iterator.next();
-             System.out.println(v.getNome());
+             //System.out.println(v.getNome());
             //j = u.getJogo();
             modelo.addRow(new Object[] {v.getNome(),v.getGenero(),v.getPlataforma(),v.getNota(),v.getEstudio()});
 
@@ -184,6 +186,40 @@ public class TelaAdicionarJogos extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+          // TODO add your handling code here:
+         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+         
+         int size = modelo.getDataVector().size();
+         boolean flag = false;
+         //Session  s = HibernateUtil.getSessionFactory().openSession();
+         //s.beginTransaction();
+         Set games = this.usuario.getJogos();
+         System.out.println("ola");
+         System.out.println(((Vector) modelo.getDataVector().elementAt(0)).elementAt(5));
+        
+         for (int i = 0; i < size; i++) {
+             
+             boolean a = !((boolean) (null == ((Vector) modelo.getDataVector().elementAt(i)).elementAt(5)));
+             System.out.println(a);
+             if(a == true)
+             {
+                       
+                Jogo j = (Jogo) this.s.createQuery("SELECT a FROM Jogo a WHERE a.nome = :nome").setParameter("nome",((Vector) modelo.getDataVector().elementAt(i)).elementAt(0)).list().get(0);
+                
+                games.add(j);
+                flag = true;
+              
+             }
+        }
+         
+        if(flag){
+            this.usuario.setJogos(games);
+            this.s.save(this.usuario);
+            this.s.getTransaction().commit();
+        }
+       
+        new TelaAlerta(5);
+        this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

@@ -139,7 +139,7 @@ public class TelaLogin extends javax.swing.JFrame {
         } else {
             Usuario user = (Usuario) list.get(0);
             if(campoSenha.getText().equals(user.getSenha())){
-                new TelaInicio(user);
+                new TelaInicio(user,s);
                 this.dispose();
             }else{
                  new TelaAlerta(3);
