@@ -5,6 +5,15 @@
  */
 package gamesmanager;
 
+import java.util.Iterator;
+import java.util.Set;
+import javax.swing.table.DefaultTableModel;
+import org.hibernate.Session;
+import java.util.ArrayList;
+import java.util.List;
+import org.hibernate.Query;
+import org.hibernate.transform.Transformers;
+  
 /**
  *
  * @author victor
@@ -14,9 +23,41 @@ public class TelaEmprestimo extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
-    public TelaEmprestimo() {
+    public TelaEmprestimo(Usuario usr) {
         initComponents();
         this.setVisible(true);
+        
+        Session  s = HibernateUtil.getSessionFactory().openSession();
+   
+        s.beginTransaction();
+        
+        
+        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+        
+        //Set games = usr.ge tJogos();
+       // modelo.setRowCount(games.size());
+        System.out.println(usr.getNome());
+        Jogo j;
+        
+        //List<VwEmprestimo> l;
+        //l = s.createQuery("SELECT VwEmprestimo FROM VwEmprestimo").list();
+        
+        Query query; 
+        query = s.createSQLQuery("SELECT * FROM VwEmprestimo");
+        query.setResultTransformer(Transformers.aliasToBean(VwEmprestimo.class));
+        ArrayList<VwEmprestimo> l;
+        l = (ArrayList<VwEmprestimo>) query.list();
+        
+        VwEmprestimo v;
+        
+         for (Iterator iterator = l.iterator();iterator.hasNext();) {
+            //UsuarioHasJogo u;
+             v = (VwEmprestimo) iterator.next();
+             System.out.println(v.getNome());
+            //j = u.getJogo();
+            modelo.addRow(new Object[] {v.getNome(),v.getGenero(),v.getPlataforma(),v.getNota(),v.getEstudio(),v.getN_usuarios()});
+
+        }
     }
 
     /**
@@ -40,14 +81,7 @@ public class TelaEmprestimo extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "Nome", "Genero", "Plataforma", "Nota", "Estudio", "Nº Usuarios", "Selecionar"
@@ -98,7 +132,7 @@ public class TelaEmprestimo extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 574, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 721, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jButton3))))
@@ -204,7 +238,7 @@ public class TelaEmprestimo extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaEmprestimo().setVisible(true);
+                //new TelaEmprestimo().setVisible(true);
             }
         });
     }
