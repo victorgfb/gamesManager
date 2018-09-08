@@ -10,7 +10,8 @@ import java.util.Set;
 import javax.swing.table.DefaultTableModel;
 import org.hibernate.Session;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Vector;
 import org.hibernate.Query;
 import org.hibernate.transform.Transformers;
   
@@ -122,6 +123,11 @@ public class TelaEmprestimo extends javax.swing.JFrame {
         });
 
         jButton3.setText("Ver Usuarios.");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -176,6 +182,32 @@ public class TelaEmprestimo extends javax.swing.JFrame {
         //new TelaInicio();
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+         
+         int size = modelo.getDataVector().size();
+         
+         for (int i = 0; i < size; i++) {
+             
+             Boolean a = (Boolean) ((Vector) modelo.getDataVector().elementAt(i)).elementAt(6);
+             if(a)
+             {
+                Session  s = HibernateUtil.getSessionFactory().openSession();
+   
+                s.beginTransaction();
+        
+                Jogo j = (Jogo) s.createQuery("SELECT a FROM Jogo a WHERE a.nome = :nome").setParameter("nome",((Vector) modelo.getDataVector().elementAt(i)).elementAt(0)).list().get(0);
+             
+                Set usrs = j.getUsuarios();
+                
+                new TelaUsuarios(usrs);
+                
+             }
+        }
+         
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
