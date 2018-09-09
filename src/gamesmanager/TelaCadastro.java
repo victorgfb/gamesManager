@@ -99,7 +99,7 @@ public class TelaCadastro extends javax.swing.JFrame {
             }
         });
 
-        plataformaComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "3DS", "Playstation 4", "Playstation 3", "Playstation Vita", "Xbox One", "Xbox 360", " " }));
+        plataformaComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "3DS", "Ps4", "Ps3", "Xone", "X360", "Switch", " " }));
 
         campoNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,7 +107,7 @@ public class TelaCadastro extends javax.swing.JFrame {
             }
         });
 
-        estudioComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Microsoft", "Nintendo", "Sony" }));
+        estudioComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "microsoft", "nintendo", "sony", "ubisoft", "naughty dog", "cd projekt red" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

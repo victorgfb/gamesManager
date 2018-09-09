@@ -200,11 +200,11 @@
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="7">
             <StringItem index="0" value="3DS"/>
-            <StringItem index="1" value="Playstation 4"/>
-            <StringItem index="2" value="Playstation 3"/>
-            <StringItem index="3" value="Playstation Vita"/>
-            <StringItem index="4" value="Xbox One"/>
-            <StringItem index="5" value="Xbox 360"/>
+            <StringItem index="1" value="Ps4"/>
+            <StringItem index="2" value="Ps3"/>
+            <StringItem index="3" value="Xone"/>
+            <StringItem index="4" value="X360"/>
+            <StringItem index="5" value="Switch"/>
             <StringItem index="6" value=" "/>
           </StringArray>
         </Property>
@@ -223,10 +223,13 @@
     <Component class="javax.swing.JComboBox" name="estudioComboBox">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="3">
-            <StringItem index="0" value="Microsoft"/>
-            <StringItem index="1" value="Nintendo"/>
-            <StringItem index="2" value="Sony"/>
+          <StringArray count="6">
+            <StringItem index="0" value="microsoft"/>
+            <StringItem index="1" value="nintendo"/>
+            <StringItem index="2" value="sony"/>
+            <StringItem index="3" value="ubisoft"/>
+            <StringItem index="4" value="naughty dog"/>
+            <StringItem index="5" value="cd projekt red"/>
           </StringArray>
         </Property>
       </Properties>

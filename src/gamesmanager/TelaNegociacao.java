@@ -224,10 +224,6 @@ public class TelaNegociacao extends javax.swing.JFrame {
         
         l = (ArrayList<VwNegocio>) query.list();
         
-        System.out.println(l.size());
-        int rows = modelo.getRowCount();
-        System.out.println(rows);   
-        
         
         modelo.getDataVector().removeAllElements();
         modelo.fireTableDataChanged();

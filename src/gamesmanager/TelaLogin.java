@@ -128,12 +128,18 @@ public class TelaLogin extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-         Session  s = HibernateUtil.getSessionFactory().openSession();
-        //Session session = HibernateUtil.getSessionFactory().openSession();
+        
+        
+        if(campoSenha.getText().isEmpty() || campoLogin.getText().isEmpty()){
+            new TelaAlerta(2);
+            return;
+        }
+        
+        Session  s = HibernateUtil.getSessionFactory().openSession();
         
         s.beginTransaction();
         List list = s.createQuery("SELECT a FROM Usuario a WHERE a.email = :email").setParameter("email", campoLogin.getText()).list();
-        System.out.println(list.size());
+        
         if(list.size() == 0){
             new TelaAlerta(4);
          
@@ -143,7 +149,7 @@ public class TelaLogin extends javax.swing.JFrame {
                 new TelaInicio(user,s);
                 this.dispose();
             }else{
-                 new TelaAlerta(3);
+                 new TelaAlerta(4);
             }
         }
 

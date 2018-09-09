@@ -5,6 +5,11 @@
  */
 package gamesmanager;
 
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.hibernate.Session;
 
 /**
@@ -231,27 +236,49 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
         if (campoEmail.getText().isEmpty() || campoSenha.getText().isEmpty()){
             System.out.println ("ERRO!");
         
-            new TelaAlerta(1).setVisible(true);
-            //campoTitulo.setText(null);
+            new TelaAlerta(2).setVisible(true);
 
         }else{
             
+            MessageDigest algorithm = null;
+             try {
+                 algorithm = MessageDigest.getInstance("SHA-256");
+             } catch (NoSuchAlgorithmException ex) {
+                 Logger.getLogger(TelaCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+             }
+                
+            byte messageDigest[] = null;
+             try {
+                 messageDigest = algorithm.digest(campoSenha.getText().getBytes("UTF-8"));
+             } catch (UnsupportedEncodingException ex) {
+                 Logger.getLogger(TelaCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+             }
+ 
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : messageDigest) {
+                hexString.append(String.format("%02X", 0xFF & b));
+            }
+            String senha = hexString.toString();
+            System.out.println(senha.length());
             a.setPkCpf(campoCPF.getText());
             a.setNome(campoNome.getText());
             a.setEmail(campoEmail.getText());
-            a.setSenha(campoSenha.getText());
+            a.setSenha(senha);
             a.setSexo(sexoComboBox.getSelectedItem().toString());
             a.setCidade(campoCidade.getText());
             a.setEstado(estadoComboBox.getSelectedItem().toString());
             a.setDdd( Integer.parseInt(campoDDD.getText()));
             a.setNumero(Integer.parseInt(campoNumero.getText()));
             s.save(a);
-            s.getTransaction().commit();
-            
-            
-            this.setVisible(false);
-            new TelaAlerta(3).setVisible(true);
-            new TelaLogin();
+            try {
+                s.getTransaction().commit();
+                this.setVisible(false);
+                new TelaAlerta(3).setVisible(true);
+                new TelaLogin();
+            } catch (Exception e) {
+                new TelaAlerta(6);
+            }
+           
         }
        // System.out.println (comboBoxCategoria.getSelectedItem());
         
