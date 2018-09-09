@@ -27,6 +27,7 @@ public class TelaMeusJogos extends javax.swing.JFrame {
     
     public TelaMeusJogos(Usuario usr, Session s) {
         initComponents();
+        this.setLocationRelativeTo(null);
         int i;
         this.usuario = usr;
         this.s = s;
@@ -190,8 +191,11 @@ public class TelaMeusJogos extends javax.swing.JFrame {
         if(flag){
             this.usuario.setJogos(games);
             this.s.save(this.usuario);
-            if(!s.getTransaction().wasCommitted())
+            if(!this.s.getTransaction().isActive()){
                 this.s.beginTransaction().commit();
+            }else{
+                this.s.getTransaction().commit();
+            }
             new TelaAlerta(1);
             this.dispose();
         }

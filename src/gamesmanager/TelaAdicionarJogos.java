@@ -30,6 +30,7 @@ public class TelaAdicionarJogos extends javax.swing.JFrame {
     
     public TelaAdicionarJogos(Usuario usr, Session s) {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.setVisible(true);
         this.usuario = usr;
         this.s = s;
@@ -204,7 +205,11 @@ public class TelaAdicionarJogos extends javax.swing.JFrame {
         if(flag){
             this.usuario.setJogos(games);
             this.s.save(this.usuario);
-            this.s.getTransaction().commit();
+            if(!this.s.getTransaction().isActive()){
+                this.s.beginTransaction().commit();
+            }else{
+                this.s.getTransaction().commit();
+            }
         }
        
         new TelaAlerta(5);

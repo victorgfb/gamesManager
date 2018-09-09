@@ -26,6 +26,7 @@ public class TelaNegociacao extends javax.swing.JFrame {
      */
     public TelaNegociacao(Usuario usr) {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.setVisible(true);
         
         Session  s = HibernateUtil.getSessionFactory().openSession();

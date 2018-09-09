@@ -21,6 +21,7 @@ public class TelaUsuarios extends javax.swing.JFrame {
      */
     public TelaUsuarios(Set usr) {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.setVisible(true);
         int i;
 

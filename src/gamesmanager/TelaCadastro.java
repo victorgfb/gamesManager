@@ -31,6 +31,7 @@ public class TelaCadastro extends javax.swing.JFrame {
     
     public TelaCadastro(Usuario user) {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.usuario = user;
     }
 
