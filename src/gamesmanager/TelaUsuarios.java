@@ -25,15 +25,11 @@ public class TelaUsuarios extends javax.swing.JFrame {
         int i;
 
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-        
-       // modelo.setRowCount(usr.size());
-        //System.out.println(usr.getNome());
+
         Usuario u;
 
          for (Iterator iterator = usr.iterator();iterator.hasNext();) {
-            //UsuarioHasJogo u;
             u = (Usuario) iterator.next();
-            //j = u.getJogo();
             modelo.addRow(new Object[] {u.getNome(),u.getEmail(),u.getCidade(),u.getEstado(),u.getNumero()});
 
         }

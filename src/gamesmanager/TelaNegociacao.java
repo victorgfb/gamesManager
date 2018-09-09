@@ -19,12 +19,12 @@ import org.hibernate.transform.Transformers;
  *
  * @author victor
  */
-public class TelaEmprestimo extends javax.swing.JFrame {
+public class TelaNegociacao extends javax.swing.JFrame {
 
     /**
      * Creates new form NewJFrame
      */
-    public TelaEmprestimo(Usuario usr) {
+    public TelaNegociacao(Usuario usr) {
         initComponents();
         this.setVisible(true);
         
@@ -35,27 +35,19 @@ public class TelaEmprestimo extends javax.swing.JFrame {
         
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
         
-        //Set games = usr.ge tJogos();
-       // modelo.setRowCount(games.size());
-        System.out.println(usr.getNome());
         Jogo j;
         
-        //List<VwEmprestimo> l;
-        //l = s.createQuery("SELECT VwEmprestimo FROM VwEmprestimo").list();
-        
         Query query; 
-        query = s.createSQLQuery("SELECT * FROM VwEmprestimo");
-        query.setResultTransformer(Transformers.aliasToBean(VwEmprestimo.class));
-        ArrayList<VwEmprestimo> l;
-        l = (ArrayList<VwEmprestimo>) query.list();
+        query = s.createSQLQuery("SELECT * FROM VwNegocio");
+        query.setResultTransformer(Transformers.aliasToBean(VwNegocio.class));
+        ArrayList<VwNegocio> l;
+        l = (ArrayList<VwNegocio>) query.list();
         
-        VwEmprestimo v;
+        VwNegocio v;
         
          for (Iterator iterator = l.iterator();iterator.hasNext();) {
-            //UsuarioHasJogo u;
-             v = (VwEmprestimo) iterator.next();
+             v = (VwNegocio) iterator.next();
              System.out.println(v.getNome());
-            //j = u.getJogo();
             modelo.addRow(new Object[] {v.getNome(),v.getGenero(),v.getPlataforma(),v.getNota(),v.getEstudio(),v.getN_usuarios()});
 
         }
@@ -109,7 +101,7 @@ public class TelaEmprestimo extends javax.swing.JFrame {
         jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel1.setText("Emprestimo");
+        jLabel1.setText("Negociação");
 
         jButton1.setText("Pesquisar");
 
@@ -198,8 +190,10 @@ public class TelaEmprestimo extends javax.swing.JFrame {
                 Session  s = HibernateUtil.getSessionFactory().openSession();
    
                 s.beginTransaction();
+                
+                String aux = (String) ((Vector) modelo.getDataVector().elementAt(i)).elementAt(0);
         
-                Jogo j = (Jogo) s.createQuery("SELECT a FROM Jogo a WHERE a.nome = :nome").setParameter("nome",((Vector) modelo.getDataVector().elementAt(i)).elementAt(0)).list().get(0);
+                Jogo j = (Jogo) s.createQuery("SELECT a FROM Jogo a WHERE a.nome = :nome").setParameter("nome",aux).list().get(0);
              
                 Set usrs = j.getUsuarios();
                 
@@ -227,14 +221,46 @@ public class TelaEmprestimo extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaEmprestimo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaNegociacao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaEmprestimo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaNegociacao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaEmprestimo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaNegociacao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaEmprestimo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaNegociacao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -271,7 +297,7 @@ public class TelaEmprestimo extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                //new TelaEmprestimo().setVisible(true);
+                //new TelaNegociacao().setVisible(true);
             }
         });
     }

@@ -119,7 +119,7 @@ public class TelaInicio extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:]
-        TelaMeusJogos meusJogos = new TelaMeusJogos(this.usuario);
+        TelaMeusJogos meusJogos = new TelaMeusJogos(this.usuario,this.session);
         //this.setVisible(false);
         meusJogos.setVisible(true);
         
@@ -140,7 +140,7 @@ public class TelaInicio extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        new TelaEmprestimo(this.usuario);
+        new TelaNegociacao(this.usuario);
        // this.dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 

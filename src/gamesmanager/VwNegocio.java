@@ -21,18 +21,18 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author victor
  */
 @Entity
-@Table(name = "VwEmprestimo")
+@Table(name = "VwNegocio")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "VwEmprestimo.findAll", query = "SELECT v FROM VwEmprestimo v")
-    , @NamedQuery(name = "VwEmprestimo.findById", query = "SELECT v FROM VwEmprestimo v WHERE v.id = :id")
-    , @NamedQuery(name = "VwEmprestimo.findByNome", query = "SELECT v FROM VwEmprestimo v WHERE v.nome = :nome")
-    , @NamedQuery(name = "VwEmprestimo.findByGenero", query = "SELECT v FROM VwEmprestimo v WHERE v.genero = :genero")
-    , @NamedQuery(name = "VwEmprestimo.findByPlataforma", query = "SELECT v FROM VwEmprestimo v WHERE v.plataforma = :plataforma")
-    , @NamedQuery(name = "VwEmprestimo.findByNota", query = "SELECT v FROM VwEmprestimo v WHERE v.nota = :nota")
-    , @NamedQuery(name = "VwEmprestimo.findByEstudio", query = "SELECT v FROM VwEmprestimo v WHERE v.estudio = :estudio")
-    , @NamedQuery(name = "VwEmprestimo.findByNUsuarios", query = "SELECT v FROM VwEmprestimo v WHERE v.nUsuarios = :nUsuarios")})
-public class VwEmprestimo implements Serializable {
+    @NamedQuery(name = "VwNegocio.findAll", query = "SELECT v FROM VwNegocio v")
+    , @NamedQuery(name = "VwNegocio.findById", query = "SELECT v FROM VwNegocio v WHERE v.id = :id")
+    , @NamedQuery(name = "VwNegocio.findByNome", query = "SELECT v FROM VwNegocio v WHERE v.nome = :nome")
+    , @NamedQuery(name = "VwNegocio.findByGenero", query = "SELECT v FROM VwNegocio v WHERE v.genero = :genero")
+    , @NamedQuery(name = "VwNegocio.findByPlataforma", query = "SELECT v FROM VwNegocio v WHERE v.plataforma = :plataforma")
+    , @NamedQuery(name = "VwNegocio.findByNota", query = "SELECT v FROM VwNegocio v WHERE v.nota = :nota")
+    , @NamedQuery(name = "VwNegocio.findByEstudio", query = "SELECT v FROM VwNegocio v WHERE v.estudio = :estudio")
+    , @NamedQuery(name = "VwNegocio.findByNUsuarios", query = "SELECT v FROM VwNegocio v WHERE v.nUsuarios = :nUsuarios")})
+public class VwNegocio implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Basic(optional = false)
@@ -54,7 +54,7 @@ public class VwEmprestimo implements Serializable {
     @Column(name = "n_usuarios")
     private BigInteger nUsuarios;
 
-    public VwEmprestimo() {
+    public VwNegocio() {
     }
 
     public int getId() {

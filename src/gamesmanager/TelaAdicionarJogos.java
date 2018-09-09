@@ -36,30 +36,22 @@ public class TelaAdicionarJogos extends javax.swing.JFrame {
         
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
         
-        //Set games = usr.ge tJogos();
-       // modelo.setRowCount(games.size());
-        System.out.println(usr.getNome());
         Jogo j;
         
-        //List<VwEmprestimo> l;
-        //l = s.createQuery("SELECT VwEmprestimo FROM VwEmprestimo").list();
-        
         Query query; 
-        query = s.createSQLQuery("SELECT * FROM VwEmprestimo");
-        query.setResultTransformer(Transformers.aliasToBean(VwEmprestimo.class));
-        ArrayList<VwEmprestimo> l;
-        l = (ArrayList<VwEmprestimo>) query.list();
+        query = s.createSQLQuery("SELECT * FROM VwNegocio");
+        query.setResultTransformer(Transformers.aliasToBean(VwNegocio.class));
+        ArrayList<VwNegocio> l;
+        l = (ArrayList<VwNegocio>) query.list();
         
-        VwEmprestimo v;
+        VwNegocio v;
         
          for (Iterator iterator = l.iterator();iterator.hasNext();) {
-            //UsuarioHasJogo u;
-             v = (VwEmprestimo) iterator.next();
-             //System.out.println(v.getNome());
-            //j = u.getJogo();
+             v = (VwNegocio) iterator.next();
             modelo.addRow(new Object[] {v.getNome(),v.getGenero(),v.getPlataforma(),v.getNota(),v.getEstudio()});
-
         }
+         
+         
     }
 
     /**
@@ -191,12 +183,9 @@ public class TelaAdicionarJogos extends javax.swing.JFrame {
          
          int size = modelo.getDataVector().size();
          boolean flag = false;
-         //Session  s = HibernateUtil.getSessionFactory().openSession();
-         //s.beginTransaction();
+         
          Set games = this.usuario.getJogos();
-         System.out.println("ola");
-         System.out.println(((Vector) modelo.getDataVector().elementAt(0)).elementAt(5));
-        
+         
          for (int i = 0; i < size; i++) {
              
              boolean a = !((boolean) (null == ((Vector) modelo.getDataVector().elementAt(i)).elementAt(5)));

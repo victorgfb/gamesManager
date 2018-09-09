@@ -21,25 +21,25 @@ public class TelaMeusJogos extends javax.swing.JFrame {
      * Creates new form NewJFrame
      * @param usr
      */
-    public TelaMeusJogos(Usuario usr) {
+    
+    private Usuario usuario;
+    private Session s;
+    
+    public TelaMeusJogos(Usuario usr, Session s) {
         initComponents();
         int i;
-
+        this.usuario = usr;
+        this.s = s;
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
         
         Set games = usr.getJogos();
-       // modelo.setRowCount(games.size());
-        System.out.println(usr.getNome());
+ 
         Jogo j;
 
          for (Iterator iterator = games.iterator();iterator.hasNext();) {
-            //UsuarioHasJogo u;
             j = (Jogo) iterator.next();
-            //j = u.getJogo();
             modelo.addRow(new Object[] {j.getNome(),j.getGenero(),j.getEstudio().getNome() + ", " + j.getEstudio().getSede(),j.getAnoLanc(),j.getNota()});
-
         }
-
 
     }
 
@@ -166,29 +166,36 @@ public class TelaMeusJogos extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-          // TODO add your handling code here:
          DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
          
          int size = modelo.getDataVector().size();
+         boolean flag = false;
+         
+         Set games = this.usuario.getJogos();
          
          for (int i = 0; i < size; i++) {
              
-             Boolean a = (Boolean) ((Vector) modelo.getDataVector().elementAt(i)).elementAt(5);
-             if(a)
+             boolean a = !((boolean) (null == ((Vector) modelo.getDataVector().elementAt(i)).elementAt(5)));
+             if(a == true)
              {
-                Session  s = HibernateUtil.getSessionFactory().openSession();
-   
-                s.beginTransaction();
-        
-                Jogo j = (Jogo) s.createQuery("SELECT a FROM Jogo a WHERE a.nome = :nome").setParameter("nome",((Vector) modelo.getDataVector().elementAt(i)).elementAt(0)).list().get(0);
-             
-                Set usrs = j.getUsuarios();
-                
-                new TelaUsuarios(usrs);
-                
+                String aux = (String) ((Vector) modelo.getDataVector().elementAt(i)).elementAt(0);
+                Jogo j = (Jogo) this.s.createQuery("SELECT a FROM Jogo a WHERE a.nome = :nome").setParameter("nome",aux).list().get(0);
+                games.remove(j);
+                flag = true;
+              
              }
         }
+         
+        
+        if(flag){
+            this.usuario.setJogos(games);
+            this.s.save(this.usuario);
+            if(!s.getTransaction().wasCommitted())
+                this.s.beginTransaction().commit();
+            new TelaAlerta(1);
+            this.dispose();
+        }
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

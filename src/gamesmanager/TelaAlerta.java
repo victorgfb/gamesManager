@@ -75,7 +75,7 @@ public class TelaAlerta extends javax.swing.JFrame {
     public void caller(int i){
         switch (i) {
             case 1:
-                jLabel2.setText("Atividade não encontrada");
+                jLabel2.setText("Exclusão concluida");
                 break;
             case 2:
                 jLabel2.setText("Verifique campo(s) vazio(s),  cadastro não concluído");
@@ -89,6 +89,7 @@ public class TelaAlerta extends javax.swing.JFrame {
             case 5:
             jLabel2.setText("Jogo(s) adicionado(s) com sucesso");
                 break;
+             
             default:
                 break;
         }
