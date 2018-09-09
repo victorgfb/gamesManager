@@ -68,7 +68,7 @@ public class TelaInicio extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setText("Emprestimo");
+        jButton5.setText("Negociação");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);

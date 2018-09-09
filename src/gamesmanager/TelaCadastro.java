@@ -216,7 +216,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         }else{
             
             a.setGenero(generoComboBox.getSelectedItem().toString());
-            a.setNome(campoNome.getText());
+            a.setNome(campoNome.getText().toLowerCase());
             
             a.setAnoLanc(Integer.parseInt(campoAnoLanc.getText()));
             

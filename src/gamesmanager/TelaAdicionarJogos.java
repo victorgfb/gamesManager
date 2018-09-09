@@ -226,7 +226,7 @@ public class TelaAdicionarJogos extends javax.swing.JFrame {
         Jogo j;
         
         Query query; 
-        query = s.createSQLQuery("SELECT * FROM VwNegocio WHERE nome LIKE '" + gameName.getText() + "%'");
+        query = s.createSQLQuery("SELECT * FROM VwNegocio WHERE nome LIKE '" + gameName.getText().toLowerCase() + "%'");
         query.setResultTransformer(Transformers.aliasToBean(VwNegocio.class));
         ArrayList<VwNegocio> l;
         
