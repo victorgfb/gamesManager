@@ -191,7 +191,8 @@ public class TelaEmprestimo extends javax.swing.JFrame {
          
          for (int i = 0; i < size; i++) {
              
-             Boolean a = (Boolean) ((Vector) modelo.getDataVector().elementAt(i)).elementAt(6);
+             boolean a =  (((Vector) modelo.getDataVector().elementAt(i)).elementAt(6) != null);
+             
              if(a)
              {
                 Session  s = HibernateUtil.getSessionFactory().openSession();

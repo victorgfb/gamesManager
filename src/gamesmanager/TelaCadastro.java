@@ -50,7 +50,6 @@ public class TelaCadastro extends javax.swing.JFrame {
         campoAnoLanc = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        campoEstudio = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         cadastrarButton = new javax.swing.JButton();
@@ -58,6 +57,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         plataformaComboBox = new javax.swing.JComboBox<>();
         campoNota = new javax.swing.JTextField();
         campoNome = new javax.swing.JTextField();
+        estudioComboBox = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -79,12 +79,6 @@ public class TelaCadastro extends javax.swing.JFrame {
         jLabel4.setText("Ano lanç.");
 
         jLabel5.setText("Nota");
-
-        campoEstudio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoEstudioActionPerformed(evt);
-            }
-        });
 
         jLabel6.setText("Estudio");
 
@@ -112,6 +106,8 @@ public class TelaCadastro extends javax.swing.JFrame {
             }
         });
 
+        estudioComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Microsoft", "Nintendo", "Sony" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -136,10 +132,10 @@ public class TelaCadastro extends javax.swing.JFrame {
                             .addComponent(jLabel7))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(campoEstudio)
                             .addComponent(cadastrarButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(plataformaComboBox, 0, 176, Short.MAX_VALUE)
-                            .addComponent(campoNota))))
+                            .addComponent(campoNota)
+                            .addComponent(estudioComboBox, 0, 176, Short.MAX_VALUE))))
                 .addContainerGap(32, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(32, 32, 32)
@@ -173,13 +169,13 @@ public class TelaCadastro extends javax.swing.JFrame {
                     .addComponent(campoNota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(campoEstudio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
+                    .addComponent(jLabel6)
+                    .addComponent(estudioComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(plataformaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(cadastrarButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -190,10 +186,6 @@ public class TelaCadastro extends javax.swing.JFrame {
     private void campoAnoLancActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoAnoLancActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_campoAnoLancActionPerformed
-
-    private void campoEstudioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoEstudioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoEstudioActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -214,61 +206,43 @@ public class TelaCadastro extends javax.swing.JFrame {
         
         Jogo a = new Jogo();
         
-        if (campoNome.getText().isEmpty() || campoEstudio.getText().isEmpty()){
+        if (campoNome.getText().isEmpty() || estudioComboBox.getSelectedItem().toString().isEmpty()){
             System.out.println ("ERRO!");
             //POPUP informando erro;
             new TelaAlerta(2).setVisible(true);
             //campoTitulo.setText(null);
 
         }else{
-            System.out.println("olaaa");
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy", Locale.ENGLISH);
             
             a.setGenero(generoComboBox.getSelectedItem().toString());
             a.setNome(campoNome.getText());
-            
-            //Date data;
             
             a.setAnoLanc(Integer.parseInt(campoAnoLanc.getText()));
             
             a.setNota(Short.parseShort(campoNota.getText()));
             
-            String estudio = campoEstudio.getText();
+            String estudio = estudioComboBox.getSelectedItem().toString();
             String plataforma = plataformaComboBox.getSelectedItem().toString();
-                   
+            
             a.setEstudio((Estudio) s.createQuery("SELECT a FROM Estudio a WHERE a.nome = :nome").setParameter("nome", estudio).list().get(0));
             
             System.out.println(a.getEstudio().getNome());
             
             HashSet set1,set2;
-            //Set set2;
-            //set2 = this.usuario.getUsuarioHasJogos();
             set1 = new HashSet();
             set2 = new HashSet();
             set1.add(s.createQuery("SELECT a FROM Plataforma a WHERE a.nome = :nome").setParameter("nome", plataforma).list().get(0));
             a.setPlataformas(set1);
             
-            //UsuarioHasJogo usr = new UsuarioHasJogo();
-            //usr.setJogo(a);
-            //usr.setUsuario(this.usuario);
             set2.add(a);
             this.usuario.setJogos(set2);
             s.save(a);
             
-            //UsuarioHasJogoId usrId = new UsuarioHasJogoId();
-            //usrId.setUsuarioPkCpf(this.usuario.getPkCpf());
-            //usrId.setJogoPkCod(a.getPkCod());
+            s.getTransaction().commit(); 
             
-            //usr.setId(usrId);
-            
-            //set2.add(usr);
-           // a.setUsuarioHasJogos(set2);
-           
-            //s.save(usr);
-            s.getTransaction().commit();
             this.setVisible(false);
             new TelaAlerta(3).setVisible(true);
-            //new TelaInicio(this.usuario);
+     
         }
     }//GEN-LAST:event_cadastrarButtonActionPerformed
 
@@ -313,9 +287,9 @@ public class TelaCadastro extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cadastrarButton;
     private javax.swing.JTextField campoAnoLanc;
-    private javax.swing.JTextField campoEstudio;
     private javax.swing.JTextField campoNome;
     private javax.swing.JTextField campoNota;
+    private javax.swing.JComboBox<String> estudioComboBox;
     private javax.swing.JComboBox<String> generoComboBox;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;

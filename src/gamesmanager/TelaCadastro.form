@@ -47,10 +47,10 @@
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="campoEstudio" max="32767" attributes="0"/>
                           <Component id="cadastrarButton" alignment="1" min="-2" pref="120" max="-2" attributes="0"/>
                           <Component id="plataformaComboBox" alignment="0" pref="176" max="32767" attributes="0"/>
                           <Component id="campoNota" alignment="0" max="32767" attributes="0"/>
+                          <Component id="estudioComboBox" alignment="0" pref="176" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -95,15 +95,15 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="campoEstudio" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="estudioComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="plataformaComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="cadastrarButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -169,11 +169,6 @@
         <Property name="text" type="java.lang.String" value="Nota"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="campoEstudio">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoEstudioActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>
         <Property name="text" type="java.lang.String" value="Estudio"/>
@@ -224,6 +219,20 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoNomeActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="estudioComboBox">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="3">
+            <StringItem index="0" value="Microsoft"/>
+            <StringItem index="1" value="Nintendo"/>
+            <StringItem index="2" value="Sony"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

@@ -229,13 +229,12 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
         
         if (campoEmail.getText().isEmpty() || campoSenha.getText().isEmpty()){
             System.out.println ("ERRO!");
-            //POPUP informando erro;
+        
             new TelaAlerta(1).setVisible(true);
             //campoTitulo.setText(null);
 
         }else{
-         //   System.out.println (campoTitulo.getText());
-            //a.getPkCpf();            
+            
             a.setPkCpf(campoCPF.getText());
             a.setNome(campoNome.getText());
             a.setEmail(campoEmail.getText());
@@ -247,6 +246,8 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
             a.setNumero(Integer.parseInt(campoNumero.getText()));
             s.save(a);
             s.getTransaction().commit();
+            
+            
             this.setVisible(false);
             new TelaAlerta(3).setVisible(true);
             new TelaLogin();

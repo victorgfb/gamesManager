@@ -7,16 +7,19 @@
             <file>file:/home/victor/NetBeansProjects/gamesManager/src/gamesmanager/TelaCadastro.java</file>
             <file>file:/home/victor/NetBeansProjects/gamesManager/src/gamesmanager/Usuario.hbm.xml</file>
             <file>file:/home/victor/NetBeansProjects/gamesManager/src/gamesmanager/GamesManager.java</file>
+            <file>file:/home/victor/NetBeansProjects/gamesManager/src/gamesmanager/TelaMeusJogos.java</file>
             <file>file:/home/victor/NetBeansProjects/gamesManager/src/META-INF/persistence.xml</file>
-            <file>file:/home/victor/NetBeansProjects/gamesManager/src/gamesmanager/Plataforma.java</file>
-            <file>file:/home/victor/NetBeansProjects/gamesManager/src/gamesmanager/MeusJogos.java</file>
+            <file>file:/home/victor/NetBeansProjects/gamesManager/src/hibernate1.reveng.xml</file>
             <file>file:/home/victor/NetBeansProjects/gamesManager/hibernate.reveng.xml</file>
+            <file>file:/home/victor/NetBeansProjects/gamesManager/src/gamesmanager/TelaUsuarios.java</file>
             <file>file:/home/victor/NetBeansProjects/gamesManager/src/hibernate.reveng.xml</file>
-            <file>file:/home/victor/NetBeansProjects/gamesManager/src/gamesmanager/TelaTodosJogos.java</file>
+            <file>file:/home/victor/NetBeansProjects/gamesManager/src/gamesmanager/TelaAdicionarJogos.java</file>
             <file>file:/home/victor/NetBeansProjects/gamesManager/src/gamesmanager/TelaAlerta.java</file>
             <file>file:/home/victor/NetBeansProjects/gamesManager/src/gamesmanager/TelaEmprestimo.java</file>
             <file>file:/home/victor/NetBeansProjects/gamesManager/src/gamesmanager/HibernateUtil.java</file>
+            <file>file:/home/victor/NetBeansProjects/gamesManager/src/gamesmanager/Usuario.java</file>
             <file>file:/home/victor/NetBeansProjects/gamesManager/src/gamesmanager/Jogo.java</file>
+            <file>file:/home/victor/NetBeansProjects/gamesManager/src/gamesmanager/VwEmprestimo.java</file>
             <file>file:/home/victor/NetBeansProjects/gamesManager/src/hibernate.cfg.xml</file>
             <file>file:/home/victor/NetBeansProjects/gamesManager/src/gamesmanager/TelaInicio.java</file>
             <file>file:/home/victor/NetBeansProjects/gamesManager/src/gamesmanager/TelaLogin.java</file>
