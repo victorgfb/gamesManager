@@ -5,7 +5,12 @@
  */
 package gamesmanager;
 
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.hibernate.Session;
 
 /**
@@ -145,14 +150,36 @@ public class TelaLogin extends javax.swing.JFrame {
          
         } else {
             Usuario user = (Usuario) list.get(0);
-            if(campoSenha.getText().equals(user.getSenha())){
+            MessageDigest algorithm = null;
+            
+            try {
+                algorithm = MessageDigest.getInstance("SHA-256");
+            } catch (NoSuchAlgorithmException ex) {
+                Logger.getLogger(TelaCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                
+            byte messageDigest[] = null;
+                try {
+                    messageDigest = algorithm.digest(campoSenha.getText().getBytes("UTF-8"));
+                } catch (UnsupportedEncodingException ex) {
+                    Logger.getLogger(TelaCadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
+                }
+ 
+            StringBuilder hexString = new StringBuilder();
+            
+            for (byte b : messageDigest) {
+                hexString.append(String.format("%02X", 0xFF & b));
+            }
+            
+            String senha = hexString.toString();
+            
+            if(senha.equals(user.getSenha())){
                 new TelaInicio(user,s);
                 this.dispose();
             }else{
                  new TelaAlerta(4);
             }
         }
-
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

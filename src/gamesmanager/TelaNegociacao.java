@@ -39,7 +39,7 @@ public class TelaNegociacao extends javax.swing.JFrame {
         Jogo j;
         
         Query query; 
-        query = s.createSQLQuery("SELECT * FROM VwNegocio");
+        query = s.createSQLQuery("SELECT * FROM VwNegocio ORDER BY nome");
         query.setResultTransformer(Transformers.aliasToBean(VwNegocio.class));
         ArrayList<VwNegocio> l;
         l = (ArrayList<VwNegocio>) query.list();

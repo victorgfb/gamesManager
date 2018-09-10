@@ -81,7 +81,7 @@ public class TelaAlerta extends javax.swing.JFrame {
                 jLabel2.setText("Verifique campo(s) vazio(s)");
                 break;
             case 3:
-                jLabel2.setText("Usuario cadastrada com sucesso");
+                jLabel2.setText("Usuario cadastrado com sucesso");
                 break;
             case 4:
                 jLabel2.setText("Usuario ou senha incorretos.");
@@ -91,6 +91,9 @@ public class TelaAlerta extends javax.swing.JFrame {
                 break;
             case 6:
             jLabel2.setText("O CPF inserido é invalido");
+                break;
+            case 7:
+                jLabel2.setText("Jogo cadastrado com sucesso");
                 break;
              
             default:

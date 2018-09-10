@@ -227,8 +227,6 @@ public class TelaCadastro extends javax.swing.JFrame {
             
             a.setEstudio((Estudio) s.createQuery("SELECT a FROM Estudio a WHERE a.nome = :nome").setParameter("nome", estudio).list().get(0));
             
-            System.out.println(a.getEstudio().getNome());
-            
             HashSet set1,set2;
             set1 = new HashSet();
             set2 = new HashSet();
@@ -242,7 +240,7 @@ public class TelaCadastro extends javax.swing.JFrame {
             s.getTransaction().commit(); 
             
             this.setVisible(false);
-            new TelaAlerta(3).setVisible(true);
+            new TelaAlerta(7).setVisible(true);
      
         }
     }//GEN-LAST:event_cadastrarButtonActionPerformed

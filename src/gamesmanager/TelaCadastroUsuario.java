@@ -259,7 +259,8 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
                 hexString.append(String.format("%02X", 0xFF & b));
             }
             String senha = hexString.toString();
-            System.out.println(senha.length());
+            
+            
             a.setPkCpf(campoCPF.getText());
             a.setNome(campoNome.getText());
             a.setEmail(campoEmail.getText());
@@ -270,6 +271,7 @@ public class TelaCadastroUsuario extends javax.swing.JFrame {
             a.setDdd( Integer.parseInt(campoDDD.getText()));
             a.setNumero(Integer.parseInt(campoNumero.getText()));
             s.save(a);
+            
             try {
                 s.getTransaction().commit();
                 this.setVisible(false);
